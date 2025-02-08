@@ -3,7 +3,9 @@ import "./App.css";
 function App() {
   return (
     <>
-      <h1>Plain React</h1>
+      <main>
+        <h1>Plain React</h1>
+      </main>
     </>
   );
 }
