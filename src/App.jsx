@@ -1,13 +1,21 @@
+import Die from "./Die";
 import "./App.css";
 
-function App() {
+export default function App() {
   return (
-    <>
-      <main>
-        <h1>Plain React</h1>
-      </main>
-    </>
+    <main>
+      <div className="board">
+        <Die value={1} />
+        <Die value={2} />
+        <Die value={3} />
+        <Die value={3} />
+        <Die value={2} />
+        <Die value={4} />
+        <Die value={4} />
+        <Die value={4} />
+        <Die value={5} />
+        <Die value={6} />
+      </div>
+    </main>
   );
 }
-
-export default App;
