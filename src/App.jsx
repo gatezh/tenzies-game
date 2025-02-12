@@ -2,6 +2,11 @@ import Die from "./Die";
 import "./App.css";
 
 export default function App() {
+  // Generate a new set of dice
+  let newRoll = new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6));
+
+  console.log(newRoll);
+
   return (
     <main>
       <div className="board">
