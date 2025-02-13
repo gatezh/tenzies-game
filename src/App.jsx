@@ -16,7 +16,15 @@ export default function App() {
   }
 
   function onRoll() {
-    setBoard(generateAllNewDice());
+    setBoard((oldBoard) => {
+      return oldBoard.map((dice) => {
+        if (!dice.isHeld) {
+          return { ...dice, value: Math.ceil(Math.random() * 6) };
+        } else {
+          return dice;
+        }
+      });
+    });
   }
 
   function hold(id) {
