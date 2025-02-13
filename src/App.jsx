@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { nanoid } from "nanoid";
+
 import Die from "./Die";
 import "./App.css";
 
@@ -6,7 +8,11 @@ export default function App() {
   const [board, setBoard] = useState(generateAllNewDice());
 
   function generateAllNewDice() {
-    return new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6));
+    return new Array(10).fill(0).map(() => ({
+      value: Math.ceil(Math.random() * 6),
+      isHeld: false,
+      id: nanoid(),
+    }));
   }
 
   function onRoll() {
@@ -16,8 +22,8 @@ export default function App() {
   return (
     <main>
       <div className="board">
-        {board.map((num) => (
-          <Die value={num} />
+        {board.map(({ id, value }) => (
+          <Die key={id} value={value} />
         ))}
       </div>
 
