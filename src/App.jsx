@@ -10,7 +10,7 @@ export default function App() {
   function generateAllNewDice() {
     return new Array(10).fill(0).map(() => ({
       value: Math.ceil(Math.random() * 6),
-      isHeld: false,
+      isHeld: true,
       id: nanoid(),
     }));
   }
@@ -22,8 +22,8 @@ export default function App() {
   return (
     <main>
       <div className="board">
-        {board.map(({ id, value }) => (
-          <Die key={id} value={value} />
+        {board.map(({ id, value, isHeld }) => (
+          <Die key={id} value={value} isHeld={isHeld} />
         ))}
       </div>
 

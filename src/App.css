@@ -41,6 +41,10 @@ button.die {
   color: #2B283A;
 }
 
+button.die.isHeld {
+  background-color: #59E391;
+}
+
 button.roll {
   background-color: #5035FF;
   grid-row: 3 / 3;
