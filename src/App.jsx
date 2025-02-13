@@ -9,7 +9,9 @@ export default function App() {
     return new Array(10).fill(0).map(() => Math.ceil(Math.random() * 6));
   }
 
-  console.log(board);
+  function onRoll() {
+    setBoard(generateAllNewDice());
+  }
 
   return (
     <main>
@@ -18,6 +20,10 @@ export default function App() {
           <Die value={num} />
         ))}
       </div>
+
+      <button className="roll" onClick={onRoll}>
+        Roll
+      </button>
     </main>
   );
 }

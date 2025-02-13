@@ -3,16 +3,29 @@ main {
   height: 320px;
   background-color: #F5F5F5;
   border-radius: 10px;
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-rows: 1fr 2fr 1fr;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 div.board {
+  grid-row: 2 / 3;
   display: grid;
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  gap: 24px 12px;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  font-size: 21px;
+  font-weight: 700;
+  font-family: Karla, Courier, monospace;
+  border-radius: 10px;
+  cursor: pointer;
 }
 
 button.die {
@@ -26,9 +39,13 @@ button.die {
   height: 36px;
   box-shadow: 0px 2px 2px 0px #00000026;
   color: #2B283A;
-  font-size: 21px;
-  font-weight: 700;
-  font-family: Inter, Courier, monospace;
-  border-radius: 10px;
-  cursor: pointer;
+}
+
+button.roll {
+  background-color: #5035FF;
+  grid-row: 3 / 3;
+  justify-self: center;
+  height: 50px;
+  width: 120px;
+  color: #FFFFFF;
 }
