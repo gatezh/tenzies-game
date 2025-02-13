@@ -10,7 +10,7 @@ export default function App() {
   function generateAllNewDice() {
     return new Array(10).fill(0).map(() => ({
       value: Math.ceil(Math.random() * 6),
-      isHeld: true,
+      isHeld: false,
       id: nanoid(),
     }));
   }
@@ -19,11 +19,28 @@ export default function App() {
     setBoard(generateAllNewDice());
   }
 
+  function hold(id) {
+    setBoard((prevState) => {
+      return prevState.map((dice) => {
+        if (dice.id === id) {
+          return { ...dice, isHeld: !dice.isHeld };
+        } else {
+          return dice;
+        }
+      });
+    });
+  }
+
   return (
     <main>
       <div className="board">
         {board.map(({ id, value, isHeld }) => (
-          <Die key={id} value={value} isHeld={isHeld} />
+          <Die
+            key={id}
+            value={value}
+            isHeld={isHeld}
+            onClick={() => hold(id)}
+          />
         ))}
       </div>
 
