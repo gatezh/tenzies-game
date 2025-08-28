@@ -1,0 +1,58 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/marcosgomesneto/bun-devcontainers/tree/main/src/basic-bun
+{
+  "name": "bun-app",
+  "dockerFile": "Dockerfile",
+
+  // Keep node_modules out of a host machine
+  "mounts": [
+    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+  ],
+
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        // **General**
+        // Prettier - Code Formatter - General code formatting
+        "esbenp.prettier-vscode",
+        // Code Spell Checker - Spell checking
+        "streetsidesoftware.code-spell-checker",
+        // YAML - YAML support
+        "redhat.vscode-yaml",
+        // Markdown Preview Github Styles - Markdown preview
+        "bierner.markdown-preview-github-styles",
+
+        // **JS**
+        // Bun VS Code
+        "oven.bun-vscode",
+        // ESLint - JavaScript linting
+        "dbaeumer.vscode-eslint",
+        // NPM Intellisense - NPM package intellisense
+        "christian-kohler.npm-intellisense",
+        // TS Error Translator - Translates TypeScript errors
+        "mattpocock.ts-error-translator",
+
+        // **CSS**
+        // Color Info - Provides color information
+        "bierner.color-info",
+        // Colorize - Colorizes code
+        "kamikillerto.vscode-colorize",
+        // Tailwind Fold - Tailwind CSS utility
+        "stivo.tailwind-fold",
+        // Tailwind CSS IntelliSense - Tailwind CSS support
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+
+  // Run this after the container is created
+  // "postCreateCommand": "bun install",
+
+  // Automatically start the dev server when you attach
+  // "postAttachCommand": {
+  //   "server": "bun run dev"
+  // }
+}
