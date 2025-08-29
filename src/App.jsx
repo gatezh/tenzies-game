@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import { useWindowSize } from 'react-use';
+import Confetti from 'react-confetti';
 
 import Die from "./Die";
 import "./App.css";
 
 export default function App() {
   const [board, setBoard] = useState(generateAllNewDice());
-  const gameWon = isGameWon();
+  const isGameWon = checkGameWon();
+  const { width, height } = useWindowSize()
 
-  function isGameWon() {
+  function checkGameWon() {
     return board.every(isHeld) && board.every(isEqual);
 
     function isHeld(die) {
@@ -19,8 +22,6 @@ export default function App() {
       return die.value == board[0].value
     }
   }
-
-  console.log(gameWon);
 
   function generateAllNewDice() {
     return new Array(10).fill(0).map(() => ({
@@ -56,6 +57,12 @@ export default function App() {
 
   return (
     <main>
+      {isGameWon && 
+        <Confetti
+          width={width}
+          height={height}
+        />
+      }
       <header>
         <h1 className="title">Tenzies</h1>
         <p className="instructions">
@@ -75,7 +82,7 @@ export default function App() {
       </div>
 
       <button className="roll" onClick={onRoll}>
-        {gameWon ? 'New Game' : 'Roll'}
+        {isGameWon ? 'New Game' : 'Roll'}
       </button>
     </main>
   );
