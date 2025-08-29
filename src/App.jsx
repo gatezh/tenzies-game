@@ -7,7 +7,7 @@ import Die from "./Die";
 import "./App.css";
 
 export default function App() {
-  const [board, setBoard] = useState(generateAllNewDice());
+  const [board, setBoard] = useState(() => generateAllNewDice());
   const isGameWon = checkGameWon();
   const { width, height } = useWindowSize()
 
