@@ -8,5 +8,6 @@ const isGithubActions = Boolean(process.env.GITHUB_ACTIONS);
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: isGithubActions && repoName ? `/${repoName}/` : "/",
   plugins: [react()],
 })
