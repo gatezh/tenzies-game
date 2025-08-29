@@ -6,6 +6,21 @@ import "./App.css";
 
 export default function App() {
   const [board, setBoard] = useState(generateAllNewDice());
+  const gameWon = isGameWon();
+
+  function isGameWon() {
+    return board.every(isHeld) && board.every(isEqual);
+
+    function isHeld(die) {
+      return die.isHeld == true
+    }
+
+    function isEqual(die) {
+      return die.value == board[0].value
+    }
+  }
+
+  console.log(gameWon);
 
   function generateAllNewDice() {
     return new Array(10).fill(0).map(() => ({
@@ -60,7 +75,7 @@ export default function App() {
       </div>
 
       <button className="roll" onClick={onRoll}>
-        Roll
+        {gameWon ? 'New Game' : 'Roll'}
       </button>
     </main>
   );
