@@ -73,6 +73,9 @@ export default function App() {
           height={height}
         />
       }
+      <div aria-live="polite" className="sr-only">
+        {isGameWon && <p> Congratulations ! You won ! Press`&quot;`New Game`&quot;` to start again.</p>}
+      </div>
       <header>
         <h1 className="title">Tenzies</h1>
         <p className="instructions">

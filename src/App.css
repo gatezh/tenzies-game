@@ -64,7 +64,6 @@ button.die.isHeld {
 }
 
 button.roll {
-
   grid-row: 3 / 3;
   justify-self: center;
   height: 50px;
@@ -73,4 +72,16 @@ button.roll {
   background-color: #5035FF;
   padding: 6px 21px;
   white-space: nowrap;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
 }
