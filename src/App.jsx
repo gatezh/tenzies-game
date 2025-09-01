@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { useWindowSize } from 'react-use';
 import Confetti from 'react-confetti';
@@ -8,8 +8,14 @@ import "./App.css";
 
 export default function App() {
   const [board, setBoard] = useState(() => generateAllNewDice());
+  const actionButton = useRef(null);
+
   const isGameWon = checkGameWon();
   const { width, height } = useWindowSize()
+
+  useEffect(() => {
+    isGameWon && actionButton.current.focus()
+  }, [isGameWon])
 
   function checkGameWon() {
     return board.every(isHeld) && board.every(isEqual);
@@ -85,7 +91,10 @@ export default function App() {
         ))}
       </div>
 
-      <button className="roll" onClick={onRoll}>
+      <button
+        ref={actionButton}
+        className="roll"
+        onClick={onRoll}>
         {isGameWon ? 'New Game' : 'Roll'}
       </button>
     </main>
